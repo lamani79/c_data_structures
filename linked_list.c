@@ -184,15 +184,57 @@ node *remove_list(node *list, int index_inp)
 	int index = 0;
 	node *head, *temp;
 	head = list;
-
-	if (list->next == NULL)
+	if (list_size(list) > index_inp)
 	{
-		temp = head;
-		head = NULL;
-		free(temp);
+		// if the list is empty
+		if (head == NULL)
+			// return head (the orginal list if the list is empty)
+			return head;
+		if (index_inp == 0)
+		{
+			// delet from the first position;
+			temp = head;
+			head = list->next;
+			free(temp);
+			return head;
+		}
+		// if the index is in the end of the list;
+		if (index_inp == list_size(list) - 1)
+		{
+			while (1 == 1)
+			{
+				if (list->next == NULL)
+				{
+					temp->next = NULL;
+					free(list);
+					return head;
+				}
+				temp = list;
 
+				list = list->next;
+			}
+		}
+		//remove item from the midle of the list:
+		while (list != NULL)
+		{
+			if (index == index_inp)
+			{
+				temp->next = list->next;
+				list->next = NULL;
+				free(list);
+				return head;
+			}
+			temp = list;
+			index++;
+			list = list->next;
+		}
+	}
+	else
+	{
+		// return head (the original list if no index much)
 		return head;
 	}
+
 	// else if ()
 	// {
 	// }
@@ -203,35 +245,44 @@ int main()
 
 	node *my_list = (node *)creat_list(10);
 	display_list(my_list);
-	printf("the size of the list = %d\n", list_size(my_list));
 
-	printf("add 999 to the list and display it: \n");
-
-	my_list = push_first(my_list, 999);
-	display_list(my_list);
-	printf("the size of the list = %d\n", list_size(my_list));
-
-	printf("\nAdd 888 to the last of the list: \n");
-
-	my_list = push_last(my_list, 10);
-	display_list(my_list);
-	printf("\nthe size of the list = %d\n", list_size(my_list));
-
-	printf("\nIndex of number 9 is : %d\n", list_index(my_list, 9));
-
-	printf("\nget the value of the index 8\n");
-	printf("\n the value of index 8 is = %d\n", get_item_list(my_list, 8));
-
-	// display_indexes_list(my_list);
-
-	int *tab = list_existe(my_list, 10);
-	printf("\ncheck if num 1 is in the list and how many time it repeat\n");
-	printf("\nnum 100 is in the list: %d\nand it's repeat %d times\n", *tab, *(tab + 1));
-
-	printf("\n remove index 1 from the list \n");
 	my_list = remove_list(my_list, 1);
 	display_list(my_list);
 
-	printf("\n\n");
+	// printf("the size of the list = %d\n", list_size(my_list));
+
+	// printf("add 999 to the list and display it: \n");
+
+	// my_list = push_first(my_list, 999);
+	// display_list(my_list);
+	// printf("the size of the list = %d\n", list_size(my_list));
+
+	// printf("\nAdd 888 to the last of the list: \n");
+
+	// my_list = push_last(my_list, 10);
+	// display_list(my_list);
+	// printf("\nthe size of the list = %d\n", list_size(my_list));
+
+	// printf("\nIndex of number 9 is : %d\n", list_index(my_list, 9));
+
+	// printf("\nget the value of the index 8\n");
+	// printf("\n the value of index 8 is = %d\n", get_item_list(my_list, 8));
+
+	// // display_indexes_list(my_list);
+
+	// int *tab = list_existe(my_list, 10);
+	// printf("\ncheck if num 1 is in the list and how many time it repeat\n");
+	// printf("\nnum 100 is in the list: %d\nand it's repeat %d times\n", *tab, *(tab + 1));
+
+	// // printf("\n remove index 1 from the list \n");
+	// // my_list = remove_list(my_list, 1);
+	// // display_list(my_list);
+
+	// // printf("\n\n");
+	// node *list2 = creat_list(0);
+	// display_list(list2);
+	// list2 = remove_list(list2, 0);
+	// printf("Ok");
+	// display_list(list2);
 	return 0;
 }
