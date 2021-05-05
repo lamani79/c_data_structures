@@ -215,17 +215,31 @@ node *remove_list(node *list, int index_inp)
 			}
 		}
 		//remove item from the midle of the list:
+		int i = 0;
 		while (list != NULL)
 		{
-			if (index == index_inp)
+			// way 1:
+			// ##########################
+
+			// if (index == index_inp)
+			// {
+			// 	temp->next = list->next;
+			// 	list->next = NULL;
+			// 	free(list);
+			// 	return head;
+			// }
+			// temp = list;
+			// ##########################
+			// second way:
+			if (index == index_inp - 1)
 			{
-				temp->next = list->next;
-				list->next = NULL;
-				free(list);
+				temp = list->next;
+				list->next = temp->next;
+				free(temp);
 				return head;
 			}
-			temp = list;
 			index++;
+			i++;
 			list = list->next;
 		}
 	}
@@ -246,7 +260,7 @@ int main()
 	node *my_list = (node *)creat_list(10);
 	display_list(my_list);
 
-	my_list = remove_list(my_list, 0);
+	my_list = remove_list(my_list, 3);
 	display_list(my_list);
 
 	// printf("the size of the list = %d\n", list_size(my_list));
