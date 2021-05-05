@@ -193,9 +193,9 @@ node *remove_list(node *list, int index_inp)
 		if (index_inp == 0)
 		{
 			// delet from the first position;
-			temp = head;
+
 			head = list->next;
-			free(temp);
+			free(list);
 			return head;
 		}
 		// if the index is in the end of the list;
@@ -246,7 +246,7 @@ int main()
 	node *my_list = (node *)creat_list(10);
 	display_list(my_list);
 
-	my_list = remove_list(my_list, 1);
+	my_list = remove_list(my_list, 0);
 	display_list(my_list);
 
 	// printf("the size of the list = %d\n", list_size(my_list));
