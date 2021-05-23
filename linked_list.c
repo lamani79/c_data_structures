@@ -256,12 +256,13 @@ node *remove_list(node *list, int index_inp)
 
 int main()
 {
+	node *new_list = creat_list(10);
+	display_list(new_list);
+	// node *my_list = (node *)creat_list(10);
+	// display_list(my_list);
 
-	node *my_list = (node *)creat_list(10);
-	display_list(my_list);
-
-	my_list = remove_list(my_list, 3);
-	display_list(my_list);
+	// my_list = remove_list(my_list, 3);
+	// display_list(my_list);
 
 	// printf("the size of the list = %d\n", list_size(my_list));
 

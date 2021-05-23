@@ -1,1 +1,1 @@
-			// delet from the first position;
+    // display_list(new_list);
