@@ -65,27 +65,58 @@ void display(node *list)
     printf("]\n");
 }
 
-int get_item(node *list, int index)
+int list_size(node *list)
 {
-    int i = 0;
+    int size = 0;
+
     while (list != NULL)
     {
-        if (i == index)
-        {
-            return list->data;
-        }
-        i++;
+        size++;
         list = list->next;
     }
+    return size;
+}
+
+void print_item_by_index(node *list, int index)
+{
+    if (index < 0 || index >= list_size(list))
+    {
+        printf("you must make the index follow this rule ====>   0<=index<list_size");
+    }
+    else
+    {
+        int i = 0;
+        while (list != NULL)
+        {
+            if (i == index)
+            {
+                printf("list[%d] == %d", index, list->data);
+            }
+            i++;
+            list = list->next;
+        }
+    }
+}
+
+int get_index(node *list, int item)
+{
+    // this function return first index if thre is many items that much;
+    int x = 0;
+    while (list != NULL)
+    {
+        if (list->data == item)
+        {
+            printf("yes\n");
+            return x;
+        }
+        x++;
+        list = list->next;
+    }
+    return -1;
 }
 
 int main()
 {
     node *new_list = creat_list(5, 1);
     display(new_list);
-
-    printf("\n#################\n");
-    printf("the data of index 2 == %d", get_item(new_list, 2));
-
-    return 0;
 }

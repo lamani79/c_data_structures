@@ -1,1 +1,1 @@
-    // display_list(new_list);
+    display(new_list);
