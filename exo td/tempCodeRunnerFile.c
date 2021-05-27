@@ -1,1 +1,1 @@
-    display_list(sorted_list);
+                // remove = temp->next->next;
